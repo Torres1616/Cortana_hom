@@ -1,249 +1,234 @@
-@charset "UTF8";
+@charset "UTF-8";
 
-
+/* Importando as fontes do Google Fonts - estilo futurista */
 @import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Anta&family=Kode+Mono&display=swap');
 
-
-
-*{padding: 0px;
+/* Zera tudo para começar limpo */
+* {
+    padding: 0px;
     margin: 0px;
-}
-:root{
-    --cor0:#6769F5;
-    --cor1:#1C1FE6;
-    --cor2:#1C5FE6;
-    --cor3:#1CDFE6;
-    --cor4:#5A1CE6;
-    --cor5:#000000;
-    --cor6:#080808f1;
-    --cor7:#000000;
-    --texto-font0:#016E8E;
-    --texto-fonte1:#D7F4EA;
-    --font_padrão: arial, verdana, helvetica, sans-serif;
-    --font_destaque:  "Anta", sans-serif ;
-    --font_texto: "Kode Mono", monospace;;   
-    --font04: ;
-
-
+    box-sizing: border-box; /* Isso aqui ajuda muito a não estourar o tamanho das caixas */
 }
 
-
-
-body{
-    background-color: var(--texto-font0); }
-    
-    a.external::after{
-       content: "\1F517";
-       color: var(--texto-fonte1);
-    }
-
-    header{
-        
-        background-color: var(--cor5);
-        text-align: center;
-        box-shadow: 3px 2px 2px #00000031;
-       }
-
-       .logo{color: var(--texto-font0);
-        margin: 1%;
-        padding-left: 30%;
-        padding-right: 30%;
-
-       }
-
-       main h1{
-        padding-top: 3%;
-        color: var(--texto-fonte1);
-        font: normal 70px var(--font_destaque);
-       
-       }
-
-      main h2{
-        background-image:linear-gradient( 95deg ,  #175a6eab,transparent);
-        border-radius: 15px;
-        color: var(--texto-fonte1);
-         font: normal 30px var(--font_texto);
-         margin: 15px 0px;
-      
-      } 
-
-      main h3{
-        color: var(--texto-fonte1);
-        font: normal 25px var(--font_texto); 
-        margin: 15px 0px;
-      }
-
-      li{
-        color: var(--texto-fonte1);
-         font:normal 1em var(--font02); 
-      }
-
-nav{display: flex;
-     background-color: #000000d0;
-     padding-left: 2%;
-     padding-right: 50%;
-     padding-top: 0.5%;
-     padding-bottom: 0.3%;
-     margin-left: 0%;
-     box-shadow: 0px 0px 33px 4px black;
-  
-    
+/* Minha paleta de cores e variáveis */
+:root {
+    --cor0: #6769F5;
+    --cor1: #1C1FE6;
+    --cor2: #1C5FE6;
+    --cor5: #000000;
+    --texto-font0: #016E8E;
+    --texto-fonte1: #D7F4EA;
+    --font_padrao: arial, verdana, helvetica, sans-serif;
+    --font_destaque: "Anta", sans-serif;
+    --font_texto: "Kode Mono", monospace;
 }
 
- nav > a {
-        text-decoration: none;
-        font-weight: bolder;
-        padding: 5px;
-        transition-duration: .3s;
-        margin-right: 120px;
-        color: #EDF3F5;
-    }
+body {
+    background-color: var(--texto-font0);
+}
 
-  nav > a:hover{
+/* Adiciona o ícone de link externo automaticamente */
+a.external::after {
+    content: "\1F517";
+    color: var(--texto-fonte1);
+    margin-left: 5px;
+}
+
+/* --- CABEÇALHO --- */
+header {
+    background-color: var(--cor5);
+    text-align: center;
+    box-shadow: 3px 2px 2px #00000031;
+    padding: 20px;
+}
+
+.logo {
+    color: var(--texto-font0);
+    max-width: 100%; /* Para a logo não vazar no celular */
+    height: auto;
+}
+
+/* --- MENU DE NAVEGAÇÃO --- */
+/* Usei Flexbox aqui para os links ficarem alinhados e quebrarem linha se precisar */
+nav {
+    display: flex;
+    justify-content: center; /* Centraliza tudo */
+    flex-wrap: wrap; /* Se a tela for pequena, joga o link pra baixo */
+    background-color: #000000d0;
+    padding: 15px;
+    gap: 30px; /* Espaço entre os links */
+    box-shadow: 0px 0px 33px 4px black;
+}
+
+nav > a {
+    text-decoration: none;
+    font-weight: bolder;
+    padding: 10px 15px;
+    transition-duration: .3s;
+    color: #EDF3F5;
+    font-family: var(--font_padrao);
+}
+
+nav > a:hover {
     background-color: #043a4bee;
     border-radius: 10px;
-     text-decoration: dotted;
+    text-decoration: underline; /* Mudei de dotted para underline pra ficar mais visível */
+}
 
-    }
-
-
-
-main{background-color: #000000;
-   margin-right: 30.3%;
-    margin-left: 30.3%;
-    margin-top: 1%;
-    padding-left: 1.5%;
-    padding-right:1.5% ;
-    min-width: 350px;
-    max-width: 1370px;
-    margin: auto;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+/* --- CONTEÚDO PRINCIPAL --- */
+main {
+    background-color: #000000;
+    /* Aqui estava o problema antes: troquei margens fixas por largura máxima */
+    width: 90%; 
+    max-width: 1200px; /* Não deixa esticar demais em monitor grande */
+    margin: 30px auto; /* Centraliza na tela */
+    padding: 30px;
+    border-radius: 15px;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.61);
-
-
 }
 
-main strong{
-    color: #12b9ecf6;
-
+main h1 {
+    padding-top: 20px;
+    color: var(--texto-fonte1);
+    font: normal 3.5rem var(--font_destaque); /* Usei rem pra ser responsivo */
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-main a{
-    color: #66e3e7e5;
-    text-decoration: none   ;
-}
-
-main a:hover{
-text-decoration: underline;
-background-color: #054f8b57;
-
-}
-
-aside{
-    background-color:#6769f575 ;
-    border-radius: 10px;
+main h2 {
+    background-image: linear-gradient(95deg, #175a6eab, transparent);
+    border-radius: 15px;
     padding: 10px;
-    margin-top: 15px;
+    color: var(--texto-fonte1);
+    font: normal 25px var(--font_texto);
+    margin: 25px 0px;
+}
+
+/* Configuração geral para qualquer imagem ou gif dentro do texto */
+img, .gif, .win {
+    max-width: 100%; /* Regra de ouro da responsividade */
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+/* Efeitos nas imagens */
+.gif {
     box-shadow: 3px 3px 36px rgba(255, 255, 255, 0.322);
 }
 
-aside > ol {
-    list-style-type: '\2714\00A0\00A0';
-    list-style-position: inside;
-    columns: 2;
-    font-size: 1.2em;
+/* Texto dos parágrafos */
+p {
+    color: var(--texto-fonte1);
+    font-family: var(--font_texto);
+    margin: 20px 0px;
+    text-align: justify;
+    text-indent: 30px;
+    line-height: 1.6em;
+    font-size: 1.1em;
 }
 
-aside > h3{
+main strong {
+    color: #12b9ecf6;
+}
+
+main a {
+    color: #66e3e7e5;
+    text-decoration: none;
+}
+
+main a:hover {
+    text-decoration: underline;
+    background-color: #054f8b57;
+}
+
+/* --- ÁREA DO VÍDEO (Hack do Aspect Ratio) --- */
+div.youtube {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Mantém a proporção 16:9 do vídeo */
+    background-color: #016d8e73;
+    margin: 40px auto;
+    border-radius: 10px;
+    overflow: hidden; /* Corta o que passar da borda */
+}
+
+div.youtube iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- BARRA LATERAL (CURIOSIDADES) --- */
+aside {
+    background-color: #6769f575;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 30px;
+    box-shadow: 3px 3px 36px rgba(255, 255, 255, 0.322);
+}
+
+aside > h3 {
     background-color: #1788aaaf;
     padding: 10px;
-    margin: -10px -10px 0px -10px;
+    margin: -15px -15px 15px -15px; /* Cola o título nas bordas do aside */
     border-radius: 10px 10px 0px 0px;
+    color: var(--texto-fonte1);
+    font-family: var(--font_texto);
 }
 
-footer{
+aside > ol {
+    list-style-position: inside;
+    columns: 2; /* Divide em duas colunas no PC */
+    font-family: var(--font_texto);
+    color: var(--texto-fonte1);
+    line-height: 1.8em;
+}
+
+/* --- RODAPÉ --- */
+footer {
     background-color: rgba(32, 158, 216, 0.466);
     text-align: center;
     color: aliceblue;
-    font-size: 1.3em;
-    font-weight: bolder;
-    margin: 5px 0px;
-    padding: 2px 0px;
+    padding: 15px;
+    font-family: var(--font_texto);
+    margin-top: 20px;
 }
 
-footer > a{
+footer > a {
     color: #ebf0edd7;
-text-decoration: none;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-footer > a:hover{
-    text-decoration: underline;
+footer > a:hover {
     color: bisque;
 }
 
-.texto01{
-    color: var(--texto-fonte1);
-    margin: 39px 0px;   
-}
+/* --- RESPONSIVIDADE (MOBILE) --- */
+/* Aqui é onde a mágica acontece pra telas pequenas */
+@media screen and (max-width: 768px) {
+    main h1 {
+        font-size: 2.5rem; /* Diminui o título */
+    }
 
-.texto02{
-    color: var(--texto-fonte1);
-    margin: 39px 0px;
-}
-
-p{color: var(--texto-fonte1);
-font-family: var(--font_texto);
-margin: 39px 0px;
-
-text-align: justify;
-text-indent: 30px;
-line-height: 1.6em;
-font-size: 1.2em;
-}
-
-.gif{  
-    max-width: 700px ;
-    max-height: 400px;
-    margin: auto;
-    display: block;
-    box-shadow: 3px 3px 36px rgba(255, 255, 255, 0.322) ;
-}
-
-.win{
-    max-width: 700px ;
-    max-height: 400px;
-    margin: auto;
-    display: block;
+    aside > ol {
+        columns: 1; /* Tira as colunas da lista pra caber no celular */
+    }
     
+    main {
+        width: 95%; /* Ocupa quase a tela toda */
+        padding: 15px;
+    }
+
+    nav {
+        flex-direction: column; /* Coloca o menu um embaixo do outro no celular */
+        align-items: center;
+        gap: 10px;
+    }
 }
-
-div > iframe{
-    position: absolute;
-    top: 4%;
-    left: 4%;
-    width: 92%;
-    height: 92%;
-}
-
-div.youtube{
-    position: relative;
-    background-color: #016d8e73;
-    padding: 20px;
-    margin: 80px -42.6px 80px -42.6px;
-    padding-bottom: 58%;
-   
-
-}
-
-.fim{
-padding-bottom: 40px;
-}
-
-
-
-
-
-
